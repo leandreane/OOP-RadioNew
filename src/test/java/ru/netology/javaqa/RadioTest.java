@@ -109,6 +109,8 @@ public class RadioTest {
             radio.increaseVolume();
         }
         Assertions.assertEquals(expected, radio.getCurrentVolume());
+        radio.increaseVolume();
+        Assertions.assertEquals(expected, radio.getCurrentVolume());
 
     }
 
