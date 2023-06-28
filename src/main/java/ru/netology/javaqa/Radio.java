@@ -1,4 +1,5 @@
 package ru.netology.javaqa;
+
 class Radio {
     private int chanel;
     private int currentVolume;

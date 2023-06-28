@@ -120,7 +120,7 @@ public class RadioTest {
         radio.increaseVolume();
         Assertions.assertEquals(1, radio.getCurrentVolume());
 
-        radio.increaseVolume();
+        radio.decreaseVolume();
         Assertions.assertEquals(expected, radio.getCurrentVolume());
 
     }
@@ -132,6 +132,15 @@ public class RadioTest {
         int expected = 0;
         radio.decreaseVolume();
         Assertions.assertEquals(expected, radio.getCurrentVolume());
+    }
+
+    @Test
+    void setChanelMoreThanMax() {
+        Radio radio = new Radio();
+
+        int expected = 0;
+        radio.setChanel(11);
+        Assertions.assertEquals(expected, radio.getChanel());
     }
 
 }
