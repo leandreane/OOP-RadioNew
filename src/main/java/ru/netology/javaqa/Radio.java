@@ -2,10 +2,23 @@ package ru.netology.javaqa;
 
 class Radio {
     private int chanel;
+    private int maxChanel;
     private int currentVolume;
 
+    public Radio() {
+        this.maxChanel = 9;
+    }
+
+    public Radio(int countChanel) {
+        if (countChanel < 1) {
+            this.maxChanel = 0;
+        } else {
+            this.maxChanel = countChanel - 1;
+        }
+    }
+
     public void next() {
-        if (chanel < 9) {
+        if (chanel < maxChanel) {
             chanel++;
         } else {
             chanel = 0;
@@ -16,18 +29,17 @@ class Radio {
         if (chanel > 0) {
             chanel--;
         } else {
-            chanel = 9;
+            chanel = maxChanel;
         }
 
     }
 
     public int getChanel() {
-
         return chanel;
     }
 
     public void setChanel(int chanel) {
-        if (0 <= chanel && chanel <= 9) {
+        if (0 <= chanel && chanel <= maxChanel) {
             this.chanel = chanel;
         }
     }
@@ -45,7 +57,6 @@ class Radio {
     }
 
     public int getCurrentVolume() {
-
         return currentVolume;
     }
 }

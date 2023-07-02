@@ -6,11 +6,42 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
+    void prevFromZeroCustom() {
+        Radio radio = new Radio(20);
+        int expected = 19;
+        radio.prev();
+
+        Assertions.assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
+    void nextFromZeroCustom() {
+        Radio radio = new Radio(20);
+
+        int expected = 0;
+        radio.next();
+        radio.prev();
+
+        Assertions.assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
+    void negativeParamCustom() {
+        Radio radio = new Radio(-5);
+
+        int expected = 0;
+        radio.prev();
+
+        Assertions.assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
     void nextFromZero() {
         Radio radio = new Radio();
 
         int expected = 1;
         radio.next();
+
         Assertions.assertEquals(expected, radio.getChanel());
     }
 
@@ -77,8 +108,19 @@ public class RadioTest {
 
         int expected = 0;
         radio.setChanel(-1);
+
         Assertions.assertEquals(expected, radio.getChanel());
 
+    }
+
+    @Test
+    void setChanelMoreThanMax() {
+        Radio radio = new Radio();
+
+        int expected = 0;
+        radio.setChanel(11);
+
+        Assertions.assertEquals(expected, radio.getChanel());
     }
 
     @Test
@@ -87,6 +129,7 @@ public class RadioTest {
 
         int expected = 5;
         radio.setChanel(5);
+
         Assertions.assertEquals(expected, radio.getChanel());
 
     }
@@ -97,6 +140,7 @@ public class RadioTest {
 
         int expected = 1;
         radio.increaseVolume();
+
         Assertions.assertEquals(expected, radio.getCurrentVolume());
     }
 
@@ -120,6 +164,7 @@ public class RadioTest {
 
         int expected = 0;
         radio.increaseVolume();
+
         Assertions.assertEquals(1, radio.getCurrentVolume());
 
         radio.decreaseVolume();
@@ -133,16 +178,9 @@ public class RadioTest {
 
         int expected = 0;
         radio.decreaseVolume();
+
         Assertions.assertEquals(expected, radio.getCurrentVolume());
     }
 
-    @Test
-    void setChanelMoreThanMax() {
-        Radio radio = new Radio();
-
-        int expected = 0;
-        radio.setChanel(11);
-        Assertions.assertEquals(expected, radio.getChanel());
-    }
 
 }
