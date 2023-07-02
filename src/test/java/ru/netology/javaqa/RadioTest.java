@@ -6,6 +6,33 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
+    void prevFromZeroCustom() {
+        Radio radio = new Radio(20);
+        int expected = 19;
+        radio.prev();
+        Assertions.assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
+    void nextFromZeroCustom() {
+        Radio radio = new Radio(20);
+
+        int expected = 0;
+        radio.next();
+        radio.prev();
+        Assertions.assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
+    void negativeParamCustom() {
+        Radio radio = new Radio(-5);
+
+        int expected = 0;
+        radio.prev();
+        Assertions.assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
     void nextFromZero() {
         Radio radio = new Radio();
 
@@ -82,6 +109,15 @@ public class RadioTest {
     }
 
     @Test
+    void setChanelMoreThanMax() {
+        Radio radio = new Radio();
+
+        int expected = 0;
+        radio.setChanel(11);
+        Assertions.assertEquals(expected, radio.getChanel());
+    }
+
+    @Test
     void setChanelNeutrale() {
         Radio radio = new Radio();
 
@@ -136,13 +172,6 @@ public class RadioTest {
         Assertions.assertEquals(expected, radio.getCurrentVolume());
     }
 
-    @Test
-    void setChanelMoreThanMax() {
-        Radio radio = new Radio();
 
-        int expected = 0;
-        radio.setChanel(11);
-        Assertions.assertEquals(expected, radio.getChanel());
-    }
 
 }
